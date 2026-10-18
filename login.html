@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Sofia's Forms</title>
-    <link rel="stylesheet" href="login.css">
-  </head>
-
-  <body>
-    <div class="login-container">
-      <h1>
-        Enter on site 
-      </h1>
-
-     <form>
+<head>
+  <meta charset="UTF-8">
+  <title>Sofia's Forms — Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1>Enter on site</h1>
+    <form id="loginForm">
       <label for="login">Login:</label>
-      <input type="text" id="login" name="login" placeholder="Enter your login">
+      <input type="text" id="login" name="login" placeholder="Enter your login" required>
 
       <label for="password">Password:</label>
-      <input type="password" id="password" name="password" placeholder="Enter your password">
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
-      <button type="submit">Submit</button>
-      <button type="registration">Registration</button>
-     </form>
+      <button type="submit">Войти</button>
+    </form>
+  </div>
 
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault(); 
 
-    </div>
+      const login = document.getElementById('login').value;
+      const password = document.getElementById('password').value;
 
-  </body>
+      if (login === 'admin' && password === '12345') {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('userName', login);
+        window.location.href = 'index.html';
+      } else {
+        alert('Неверный логин или пароль');
+      }
+    });
+  </script>
+</body>
 </html>
