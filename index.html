@@ -6,15 +6,19 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+
     <header>
       <nav class="topbar">
         <a href="index.html" class="logo-link">
           <img src="img/logo1.jpg" alt="Sofia Forms Logo" class="logo-img">
         </a>
+
         <ul class="nav-links">
           <li><a href="forme.html">Personal Forms</a></li>
           <li><a href="education.html">Education Forms</a></li>
         </ul>
+
+        <button id="logoutBtn">Выйти</button>
       </nav>
     </header>
 
@@ -24,16 +28,14 @@
 
       <div class="cards-container">
         <article class="card">
-          <!-- Замени img/me.jpg на реальную картинку или временно оставь заглушку -->
-          <img src="img/me.jpg" alt="Personal forms" class="card-img">
+          <img src="https://via.placeholder.com/300x220" alt="Заглушка">
           <h2>Personal Forms</h2>
           <p>Fun forms about yourself: favorite colors, hobbies, interests, and anything you want to share.</p>
           <a href="forme.html" class="btn">Go to Personal Forms</a>
         </article>
 
         <article class="card">
-          <!-- Замени img/education.jpg на реальную картинку -->
-          <img src="img/education.jpg" alt="Education forms" class="card-img">
+          <img src="https://via.placeholder.com/300x220" alt="Заглушка">
           <h2>Education Forms</h2>
           <p>Surveys and questionnaires for school projects, research, and collecting opinions.</p>
           <a href="education.html" class="btn">Go to Education Forms</a>
@@ -44,5 +46,34 @@
     <footer class="site-footer">
       <p>&copy; 2024 Sofia's Forms. All rights reserved.</p>
     </footer>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        if (!isLoggedIn) {
+          window.location.href = 'login.html';
+          return; 
+        }
+
+        const userName = localStorage.getItem('userName') || 'Пользователь';
+        const header = document.querySelector('header');
+        const newSpan = document.createElement('span');
+        newSpan.textContent = ` | Привет, ${userName}`;
+        newSpan.style.marginLeft = '10px';
+        newSpan.style.color = '#555';
+        header.appendChild(newSpan);
+
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+          logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userName');
+            window.location.href = 'login.html';
+          });
+        }
+      });
+    </script>
   </body>
 </html>
