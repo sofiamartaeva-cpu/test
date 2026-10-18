@@ -1,4 +1,3 @@
-/* Базовые настройки страницы */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -11,15 +10,18 @@ body {
 header {
   background-color: #ffffff;
   padding: 15px 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .topbar {
   max-width: 1000px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-between; 
+  align-items: center;            
   padding: 0 20px;
 }
 
@@ -28,6 +30,7 @@ header {
   width: auto;
 }
 
+/* Меню навигации */
 .nav-links {
   list-style: none;
   margin: 0;
@@ -39,11 +42,28 @@ header {
 .nav-links a {
   text-decoration: none;
   color: #333;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .nav-links a:hover {
   color: #007bff;
+}
+
+/* Кнопка «Выйти» */
+#logoutBtn {
+  padding: 8px 16px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+#logoutBtn:hover {
+  background-color: #c82333;
 }
 
 /* Основной контент */
@@ -69,19 +89,21 @@ header {
 
 /* Карточка */
 .card {
-  flex: 1 1 300px; /* Карточка занимает место, минимум 300px */
+  flex: 1 1 300px;
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   text-align: left;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-img {
   width: 100%;
   height: 220px;
-  object-fit: cover; /* Картинка заполняет блок, не искажаясь */
+  object-fit: cover;
   border-radius: 8px;
   margin-bottom: 18px;
 }
@@ -96,9 +118,10 @@ header {
   color: #666;
   line-height: 1.5;
   margin-bottom: 20px;
+  flex-grow: 1;
 }
 
-/* Кнопка */
+/* Кнопка внутри карточки */
 .btn {
   display: inline-block;
   padding: 12px 24px;
@@ -106,4 +129,14 @@ header {
   color: white;
   text-decoration: none;
   border-radius: 6px;
-  font-weight:
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
